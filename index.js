@@ -68,16 +68,5 @@ fs.readFile(file1, "utf-8", (err, file1) => {
           "Something went wrong. Kindly follow the readme file instructions to run the program"
         );
       }
-  
-      // if (process.argv[2] === "patch") {
-      //   fs.writeFile(process.argv[3], result, (err) => {
-      //     if (err) throw err;
-      //     console.log("Text appended successfully.");
-      //   });
-      // } else {
-      //   console.log("False");
-      // }
-  
-      // console.log(mergedArray.join("\n"));
   });
 });
