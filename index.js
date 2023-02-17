@@ -28,7 +28,30 @@ fs.readFile(file1, "utf-8", (err, file1) => {
     const arrOneDiff = formatedArr1.filter((x) => !formatedArr2.includes(x));
     const arrTwoDiff = formatedArr2.filter((x) => !formatedArr1.includes(x));
 
-    console.log(arrOneDiff);
-    console.log(arrTwoDiff);
+    const mergedArray = [];
+
+    const shorterArrayLength = Math.min(
+      formatedArr1.length,
+      formatedArr2.length
+    );
+
+    for (let i = 0; i < shorterArrayLength; i++) {
+      if (formatedArr1[i] === formatedArr2[i]) {
+        mergedArray.push(formatedArr1[i]);
+      } else {
+        mergedArray.push(formatedArr1[i]);
+        mergedArray.push(formatedArr2[i]);
+      }
+    }
+
+    if (formatedArr1.length > formatedArr2.length) {
+      mergedArray.push(...formatedArr1.slice(shorterArrayLength));
+    } else if (formatedArr2.length > formatedArr1.length) {
+      mergedArray.push(...formatedArr2.slice(shorterArrayLength));
+    }
+
+    const result = mergedArray.join("\n");
+
+    console.log(result);
   });
 });
