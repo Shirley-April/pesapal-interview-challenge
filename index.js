@@ -52,6 +52,32 @@ fs.readFile(file1, "utf-8", (err, file1) => {
 
     const result = mergedArray.join("\n");
 
-    console.log(result);
+    if (process.argv[2] === "diff") {
+        console.log(
+          `${arrOneDiff.join("\n")}\n ----------------- \n${arrTwoDiff.join(
+            "\n"
+          )}`
+        );
+      } else if (process.argv[2] === "patch") {
+        fs.writeFile(process.argv[3], result, (err) => {
+          if (err) throw err;
+          console.log("Patching files");
+        });
+      } else {
+        console.log(
+          "Something went wrong. Kindly follow the readme file instructions to run the program"
+        );
+      }
+  
+      // if (process.argv[2] === "patch") {
+      //   fs.writeFile(process.argv[3], result, (err) => {
+      //     if (err) throw err;
+      //     console.log("Text appended successfully.");
+      //   });
+      // } else {
+      //   console.log("False");
+      // }
+  
+      // console.log(mergedArray.join("\n"));
   });
 });
